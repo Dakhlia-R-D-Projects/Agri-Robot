@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="assembly_robot">
+<link name="base_footprint">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <box size="0.001 0.001 0.001" />
+        </geometry>
+    </visual>
+</link>
+
+<joint name="base_footprint_joint" type="fixed">
+    <origin xyz="0 0 0.001" rpy="0 0 0" />
+    <parent link="base_footprint"/>
+    <child link="base_link" />
+</joint>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.00607831531098264 -0.00512421696887815 -0.0263772181345172"
+        rpy="0 0 0" />
+      <mass
+        value="2.48754704881188" />
+      <inertia
+        ixx="0.00465292752967977"
+        ixy="-6.62893966151593E-05"
+        ixz="4.42178910535028E-06"
+        iyy="0.0107189940020866"
+        iyz="-7.99081889825504E-09"
+        izz="0.010416417249494" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Lidar_Link">
+    <inertial>
+      <origin
+        xyz="-0.000240206033289558 -0.000120539643168349 0.0151604670149083"
+        rpy="0 0 0" />
+      <mass
+        value="0.0339052137611754" />
+      <inertia
+        ixx="1.94189565252121E-05"
+        ixy="1.42920437917507E-09"
+        ixz="4.00833228196001E-08"
+        iyy="1.90727024540594E-05"
+        iyz="-8.73425222883216E-10"
+        izz="3.67628950450108E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/Lidar_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/Lidar_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Lidar_Joint"
+    type="fixed">
+    <origin
+      xyz="0.0815 -0.005 0.3095"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Lidar_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Camera_Link">
+    <inertial>
+      <origin
+        xyz="0.0115560001022054 1.13963025803439E-05 -0.000135981056031798"
+        rpy="0 0 0" />
+      <mass
+        value="0.107910962085184" />
+      <inertia
+        ixx="7.125547603814E-05"
+        ixy="-1.79323689190024E-08"
+        ixz="4.92245535458186E-08"
+        iyy="7.71021803909149E-06"
+        iyz="-2.60666513687486E-10"
+        izz="7.02570506402702E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/Camera_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/Camera_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Camera_Joint"
+    type="fixed">
+    <origin
+      xyz="0.12911 -0.0051242 0.28676"
+      rpy="0 0.17453 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Camera_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="MPU_Link">
+    <inertial>
+      <origin
+        xyz="-0.00753938070397704 0.0102879760847154 -0.00030420688882582"
+        rpy="0 0 0" />
+      <mass
+        value="0.000351250881223519" />
+      <inertia
+        ixx="9.45690179472922E-09"
+        ixy="-2.68793364809838E-13"
+        ixz="-4.16573010640559E-25"
+        iyy="5.23526656779839E-09"
+        iyz="-2.56467873988509E-23"
+        izz="1.46360849067925E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/MPU_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/MPU_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="MPU_Joint"
+    type="fixed">
+    <origin
+      xyz="0.030144 -0.015255 0.31158"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="MPU_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Front_Left_Wheel_Link">
+    <inertial>
+      <origin
+        xyz="0.0354775820566569 -1.045316723014E-06 -6.15237786466549E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.093265100168023" />
+      <inertia
+        ixx="0.000225278175659469"
+        ixy="-9.60114563118981E-10"
+        ixz="-5.18985270835741E-10"
+        iyy="0.000141708195102764"
+        iyz="3.24185964365183E-10"
+        izz="0.000141707983353066" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/Front_Left_Wheel_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/Front_Left_Wheel_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Front_Left_Wheel_Joint"
+    type="continuous">
+    <origin
+      xyz="0.19358 0.19656 -0.15442"
+      rpy="0 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Front_Left_Wheel_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Front_Right_Wheel_Link">
+    <inertial>
+      <origin
+        xyz="0.0354775820565962 -1.04531662940832E-06 -6.1523790778617E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.093265100167896" />
+      <inertia
+        ixx="0.000225278175659321"
+        ixy="-9.60114660738585E-10"
+        ixz="-5.18985183119554E-10"
+        iyy="0.00014170819510267"
+        iyz="3.24185872685103E-10"
+        izz="0.000141707983352871" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/Front_Right_Wheel_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/Front_Right_Wheel_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Front_Right_Wheel_Joint"
+    type="continuous">
+    <origin
+      xyz="0.19358 -0.2068 -0.15442"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Front_Right_Wheel_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Rear_Left_Wheel_Link">
+    <inertial>
+      <origin
+        xyz="0.0354775820566849 -1.0453167693103E-06 -6.15237769507893E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.0932651001684448" />
+      <inertia
+        ixx="0.000225278175659472"
+        ixy="-9.6011453288276E-10"
+        ixz="-5.18985305436607E-10"
+        iyy="0.000141708195102837"
+        iyz="3.24185952075996E-10"
+        izz="0.000141707983353001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/Rear_Left_Wheel_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/Rear_Left_Wheel_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Rear_Left_Wheel_Link"
+    type="continuous">
+    <origin
+      xyz="-0.21042 0.19656 -0.15442"
+      rpy="0 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Rear_Left_Wheel_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Rear_Right_Wheel_Link">
+    <inertial>
+      <origin
+        xyz="0.0354775820466632 -1.04527652980413E-06 -6.15225794031726E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.0932651001664936" />
+      <inertia
+        ixx="0.000225278175672297"
+        ixy="-9.60324391270414E-10"
+        ixz="-5.18985118068264E-10"
+        iyy="0.000141708195107804"
+        iyz="3.24189897011909E-10"
+        izz="0.000141707983376632" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/Rear_Right_Wheel_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agri_robot_description/meshes/visual/Rear_Right_Wheel_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Rear_Right_Wheel_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.21042 -0.2068 -0.15442"
+      rpy="1.6003 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Rear_Right_Wheel_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+</robot>
