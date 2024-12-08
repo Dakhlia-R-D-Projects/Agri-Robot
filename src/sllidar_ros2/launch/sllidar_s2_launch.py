@@ -14,7 +14,7 @@ def generate_launch_description():
     channel_type =  LaunchConfiguration('channel_type', default='serial')
     serial_port = LaunchConfiguration('serial_port', default='/dev/ttyUSB0')
     serial_baudrate = LaunchConfiguration('serial_baudrate', default='1000000') #for s2 is 1000000
-    frame_id = LaunchConfiguration('frame_id', default='laser')
+    frame_id = LaunchConfiguration('frame_id', default='Lidar_Link')
     inverted = LaunchConfiguration('inverted', default='false')
     angle_compensate = LaunchConfiguration('angle_compensate', default='true')
     scan_mode = LaunchConfiguration('scan_mode', default='DenseBoost')
@@ -65,7 +65,18 @@ def generate_launch_description():
                          'frame_id': frame_id,
                          'inverted': inverted, 
                          'angle_compensate': angle_compensate, 
-                         'scan_mode': scan_mode}],
-            output='screen'),
+                         'scan_mode': scan_mode}]),
+
+        Node(
+            package='rf2o_laser_odometry',
+            executable='rf2o_laser_odometry_node',
+            name='rf2o_laser_odometry',
+            parameters=[{'laser_scan_topic' : '/scan',
+                         'odom_topic' : '/odom',
+                         'publish_tf' : True,
+                         'base_frame_id' : 'base_link',
+                         'odom_frame_id' : 'odom',
+                         'init_pose_from_topic' : '',
+                         'freq' : 20.0}])
     ])
 

@@ -36,7 +36,7 @@ def generate_launch_description():
         description='Whether to start the joint state publisher')
     declare_use_rviz_cmd = DeclareLaunchArgument(
         'use_rviz',
-        default_value='True',
+        default_value='false',
         description='Whether to start RVIZ')
 
     declare_urdf_cmd = DeclareLaunchArgument(
@@ -54,14 +54,6 @@ def generate_launch_description():
         #parameters=[{'use_sim_time': use_sim_time}],
         arguments=[urdf_file])
     
-    start_joint_state_publisher_cmd = Node(
-        condition=IfCondition(use_joint_state_pub),
-        package='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui',
-        name='joint_state_publisher_gui',
-        output='screen',
-        arguments=[urdf_file])
-    
     rviz_cmd = Node(
         condition=IfCondition(use_rviz),
         package='rviz2',
@@ -70,6 +62,10 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file],
         output='screen')
         
+    tf_map= Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        arguments= ["0", "0", "0", "0", "0", "0", "map", "odom"])
   
     # Create the launch description and populate
     ld = LaunchDescription()
@@ -83,8 +79,8 @@ def generate_launch_description():
 
 
     # Add any conditioned actions
-    ld.add_action(start_joint_state_publisher_cmd)
     ld.add_action(start_robot_state_publisher_cmd)
+    ld.add_action(tf_map)
     ld.add_action(rviz_cmd)
 
     return ld   
